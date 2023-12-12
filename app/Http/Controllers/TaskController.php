@@ -4,20 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $tasks = Task::all();
-        $tasks = Task::simplepaginate(10);
+        $tasks = Task::all();
+        // $tasks = Task::simplepaginate(10);
+        $user = Auth::user()->id ?? '';
+
+        $tasks = Task::where('user_id', $user)->get();
 
 
         return view('dashboard', compact('tasks'));
+
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,11 +47,11 @@ class TaskController extends Controller
             'title' => 'required|max:255',
             'description' => 'nullable',
 
-
         ]);
         Task::create([
             'title' => $request->title,
             'description' => $request->description,
+            'user_id' => Auth::user()->id,
 
         ]);
         // $request->session()->flash('alert-success', 'Task Greated Successfully');
@@ -92,4 +101,6 @@ class TaskController extends Controller
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Task Deleted Successfully');
     }
+
 }
+

@@ -49,7 +49,7 @@
                             <label for="inputName">Name</label>
                             <div>
                                 <input name="name" type="name" class="form-control" id="inputName"
-                                    placeholder="Name" required>
+                                    placeholder="Name">
                             </div>
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -60,7 +60,7 @@
                             <label for="inputEmail">Email</label>
                             <div>
                                 <input name="email" type="email" class="form-control" id="inputEmail"
-                                    placeholder="Email" required>
+                                    placeholder="Email">
                             </div>
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -72,7 +72,7 @@
                             <label for="inputPassword">Password</label>
                             <div>
                                 <input name="password" type="password" class="form-control" id="inputPassword"
-                                    placeholder="Password" required>
+                                    placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                 @endif

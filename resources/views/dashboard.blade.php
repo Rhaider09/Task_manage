@@ -139,7 +139,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $tasks->links() }}
+            {{-- {{ $tasks->links() }} --}}
         </div>
     </main>
 @endsection
